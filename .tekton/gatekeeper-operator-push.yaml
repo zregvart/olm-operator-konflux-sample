@@ -2,7 +2,7 @@ apiVersion: tekton.dev/v1
 kind: PipelineRun
 metadata:
   annotations:
-    build.appstudio.openshift.io/repo: https://github.com/konflux-ci/olm-operator-konflux-sample?rev={{revision}}
+    build.appstudio.openshift.io/repo: https://github.com/zregvart/olm-operator-konflux-sample?rev={{revision}}
     build.appstudio.redhat.com/commit_sha: '{{revision}}'
     build.appstudio.redhat.com/target_branch: '{{target_branch}}'
     build.appstudio.openshift.io/build-nudge-files: "bundle-hack/update_bundle.sh"
@@ -15,11 +15,11 @@ metadata:
       "gatekeeper-operator".pathChanged())
   creationTimestamp: null
   labels:
-    appstudio.openshift.io/application: olm-operator
+    appstudio.openshift.io/application: olm-operator-konflux-sample
     appstudio.openshift.io/component: gatekeeper-operator
     pipelines.appstudio.openshift.io/type: build
   name: gatekeeper-operator-on-push
-  namespace: konflux-samples-tenant
+  namespace: zregvart-tenant
 spec:
   params:
   - name: git-url
@@ -27,7 +27,7 @@ spec:
   - name: revision
     value: '{{revision}}'
   - name: output-image
-    value: quay.io/redhat-user-workloads/konflux-samples-tenant/olm-operator/gatekeeper-operator:{{revision}}
+    value: quay.io/redhat-user-workloads/zregvart-tenant/olm-operator-konflux-sample/gatekeeper-operator:{{revision}}
   - name: dockerfile
     value: Containerfile.gatekeeper-operator
   - name: platforms

@@ -32,9 +32,7 @@ spec:
     value: Containerfile.gatekeeper-operator
   - name: platforms
     value:
-      - linux/amd64
       - linux/arm64
-      - linux/s390x
   pipelineRef:
     name: multi-arch-build-pipeline
   workspaces:
